@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 class lcg:
     def __init__(self, seed, a=1, c=0, m=2**64-1):
         self.seed = seed
@@ -12,11 +14,15 @@ class lcg:
         self.counter += 1
         return self.current_val
 
+    def roll_norm(self):
+        return self.roll()/self.m
+
 
 def main():
-    prng = lcg(3453252345, 723325234)
-    for _ in range(10):
-        print(prng.roll())
+    prng = lcg(344, a=16598013, c=12820163, m=2**24)
+    sample = [prng.roll_norm() for _ in range(1_000_000)]
+    plt.hist(sample, bins=30)
+    plt.show()
 
 
 if __name__ == '__main__':
