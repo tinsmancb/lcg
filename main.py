@@ -30,6 +30,8 @@ def lcg_cypher(text: bytearray, key: int) -> bytearray:
         out.append(i ^ j)
 
     return out
+    #TODO: Check that you can encrypt and decrypt messages
+    #TODO: succesfully.
 
 def main():
     prng = lcg(344, a=77, c=76, m=2**16+1)
